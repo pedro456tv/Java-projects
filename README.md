@@ -1,2 +1,2 @@
-# Reflex-test
-Reflex tests in Java
+# Java projects
+Different Java projects I worked on
