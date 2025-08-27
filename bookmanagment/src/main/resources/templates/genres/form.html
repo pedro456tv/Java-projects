@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Genre Form</title></head>
+<body>
+<h1 th:text="${genre.id == null} ? 'Add Genre' : 'Edit Genre'"></h1>
+<form th:action="@{/genres}" th:object="${genre}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Name: <input type="text" th:field="*{name}"/></label>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
