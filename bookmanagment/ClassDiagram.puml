@@ -1,0 +1,63 @@
+@startuml
+allow_mixing
+
+skinparam package {
+  BackgroundColor<<Application>> #D0E1F9
+  BackgroundColor<<Domain>> #D0F0C0
+  BackgroundColor<<DataAccess>> #F9E0D0
+}
+
+
+package "Application Layer" <<Application>> {
+    class BookController <<Controller>>
+    class PublisherController <<Controller>>
+
+    rectangle "Thymeleaf UI Templates\n(resources/templates/...)" <<UI>>
+}
+
+package "Domain Layer" <<Domain>> {
+    class BookService <<Service>>
+    class PublisherService <<Service>>
+
+    class Book {
+        - Long id
+        - String title
+        - String author
+        - Genre genre
+        - Publisher publisher
+    }
+
+    class Genre {
+        - String name
+    }
+
+    class Publisher {
+        - Long id
+        - String name
+        - String address
+    }
+}
+
+package "Data Access Layer" <<DataAccess>> {
+    interface BookRepository <<Repository>>
+    interface PublisherRepository <<Repository>>
+
+    database "Database" as DB
+}
+
+BookController ..> BookService
+BookController ..> PublisherService
+
+PublisherController ..> PublisherService
+
+BookService --> BookRepository
+PublisherService --> PublisherRepository
+
+BookRepository --> DB
+PublisherRepository --> DB
+
+Book *-- Genre : embeds
+Book *-- Publisher : references
+
+
+@enduml
