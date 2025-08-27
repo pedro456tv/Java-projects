@@ -1,0 +1,91 @@
+@startuml
+skinparam monochrome true
+hide empty members
+skinparam classFontSize 13
+
+title "Extended UML Class Model"
+
+
+class ""**Backlog**" as Backlog <<Aggregate Root,Entity>> {
+  - **id: UUID**
+  - **name: String**
+  - **description: String**
+  --
+  + **addBacklogItem()**
+  + **getBacklogItems()**
+}
+
+' Entities
+class "**BacklogItem**" as BacklogItem <<Entity>> {
+  - **id: UUID**
+  - **status: BacklogItemStatus**
+  - **story: String**
+  - **storyPoints: Integer**
+  - **summary: String**
+  - **type: BacklogItemType**
+  --
+  + **assignToRelease()**
+  + **assignToProduct()**
+  + **assignToSprint()**
+  + **updateItem()**
+  + **displayReleases()**
+  + **displaySprints()**
+  + **displayProducts()**
+  + **getDetails()**
+  + **getRelatedReleases()**
+  - **verify()**
+  - **showMessage()**
+}
+
+class "**Task**" as Task<<Entity>> {
+  - **id: UUID**
+  - **name: String**
+  - **description: String**
+  - **hoursRemaining: Integer**
+  - **volunteer: TeamMemberID**
+}
+
+' Value Objects
+class "**ProductID**" as ProductID <<Value Object>> {
+  - **id: String**
+}
+
+class "**ReleaseID**" as ReleaseID <<Value Object>> {
+  - **id: String**
+}
+
+class "**SprintID**" as SprintID <<Value Object>> {
+  - **id: String**
+}
+
+class "**EstimationLogEntry**" as EstimationLogEntry <<Value Object>> {
+  - **name: String**
+  - **description: String**
+  - **hoursRemaining: Integer**
+  - **volunteer: String**
+}
+
+
+' Relationships
+Backlog "1" *-- "*" BacklogItem : backlogItems
+BacklogItem "1" *-- "*" Task : tasks
+BacklogItem "*" o-- "1" ProductID : productID
+BacklogItem "*" o-- "1" ReleaseID : releaseID
+BacklogItem "*" o-- "1" SprintID : sprintID
+Task "1" *-- "*" EstimationLogEntry : estimationLogEntries
+
+' External Services (as interfaces)
+interface "**ProductService**" as ProductService {
+}
+
+interface ""**ReleaseService**" as ReleaseService{
+}
+
+interface "**SprintService**" as SprintService{
+}
+
+BacklogItem ..> ProductService : products
+BacklogItem ..> ReleaseService : releases
+BacklogItem ..> SprintService : sprints
+
+@enduml

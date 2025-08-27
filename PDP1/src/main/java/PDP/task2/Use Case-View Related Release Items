@@ -1,0 +1,10 @@
+@startuml
+
+title Use Case:View Related Release Items
+
+:Developer: -- (Select Item)
+:Developer: -- (Search for item)
+(Select Item) -- (View related release items)
+(Select Item)--(Search for related items)
+
+@enduml

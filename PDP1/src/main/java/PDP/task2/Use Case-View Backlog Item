@@ -1,0 +1,9 @@
+@startuml
+
+title Use Case:View Backlog item
+
+:Product Owner: - (Select Item)
+:Product Owner: -- (Search for item)
+:Product Owner: -- (Update item)
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+title Use Case:Assign Backlog item to Product
+
+:Product Owner: -- (Assign Item)
+:Product Owner: -- (Search for item)
+(Assign Item) -- (Select Product)
+(Assign Item)--(Search for product)
+
+@enduml

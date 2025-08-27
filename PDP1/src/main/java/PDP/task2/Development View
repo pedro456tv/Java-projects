@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+skinparam nodesep 20
+skinparam ranksep 30
+
+title Backlog Development View
+
+component "**Issues system**" as System {
+}
+
+component "**Backlog**" as Backlog <<Aggregate Root, Entity>>{
+}
+
+component "**Backlog Processor**" as Processor {
+  [AddItemService]
+  [UpdateItemService]
+  [ViewItemService]
+  [AssignItemService]
+}
+
+component "**Backlog Repository**" as Repo{
+}
+
+component "**External Services**" as External {
+  [ProductAPI] <<REST Client>>
+  [ReleaseAPI] <<REST Client>>
+  [SprintAPI] <<REST Client>>
+}
+component "**Call fulfillment**" as Fulfill <<MessageBus>>{
+}
+component "**Team system**" as Team{
+}
+
+database "**Members Database**" as MDB <<Database>>{
+}
+
+database "**Backlog Database**" as DB <<Database>>{
+  [BacklogItems]
+  [Tasks]
+}
+
+
+System -(0- Backlog
+Backlog -(0- Repo : "Query items"
+Backlog -(0- Processor : "Process call (assign/add/update/view)"
+Backlog -(0- Team : "Query team member"
+Team -(0- MDB : "Query member data<<JDBC>>"
+Processor -(0- DB : "Access database <<JDBC>>"
+Repo -(0- DB : "Query database <<JDBC>>"
+
+Processor -(0- External : "Access/Process via REST"
+Processor -(0- Fulfill : "Execute process(call)"
+@enduml

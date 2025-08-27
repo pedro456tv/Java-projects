@@ -1,0 +1,10 @@
+@startuml
+
+title Use Case:Assign Backlog item to Sprint
+
+:Scrum Master: -- (Assign Item)
+:Scrum Master: -- (Search for item)
+(Assign Item) -- (Select Sprint)
+(Assign Item)--(Search for Sprint)
+
+@enduml

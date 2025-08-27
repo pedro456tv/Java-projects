@@ -1,0 +1,11 @@
+@startuml
+
+title Use Case:Assign Backlog item to Release
+
+:Product Owner: -- (Assign Item)
+:Product Owner: -- (Search for item)
+(Assign Item) -- (Select Release)
+
+(Assign Item)--(Search for release)
+
+@enduml
