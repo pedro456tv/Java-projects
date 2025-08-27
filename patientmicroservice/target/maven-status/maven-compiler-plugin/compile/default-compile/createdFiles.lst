@@ -1,0 +1,9 @@
+com\example\patientmicroservice\repository\PatientRepository.class
+com\example\patientmicroservice\config\RestTemplateConfig.class
+com\example\patientmicroservice\service\PatientService.class
+com\example\patientmicroservice\PatientmicroserviceApplication.class
+com\example\patientmicroservice\model\Patient.class
+com\example\patientmicroservice\service\impl\PatientServiceImpl.class
+com\example\patientmicroservice\controller\HomeController.class
+com\example\patientmicroservice\controller\PatientController.class
+com\example\patientmicroservice\client\PatientRestClient.class

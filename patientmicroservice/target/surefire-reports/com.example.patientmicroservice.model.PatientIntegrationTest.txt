@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.example.patientmicroservice.model.PatientIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 32.48 s <<< FAILURE! -- in com.example.patientmicroservice.model.PatientIntegrationTest
+com.example.patientmicroservice.model.PatientIntegrationTest.testAddAndGetPatient -- Time elapsed: 30.44 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: "Test"
+ but was: null
+	at com.example.patientmicroservice.model.PatientIntegrationTest.testAddAndGetPatient(PatientIntegrationTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

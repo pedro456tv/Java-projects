@@ -1,0 +1,3 @@
+com\example\patientmicroservice\model\PatientIntegrationTest.class
+com\example\patientmicroservice\controller\PatientControllerTest.class
+com\example\patientmicroservice\PatientmicroserviceApplicationTests.class
